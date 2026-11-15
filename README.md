@@ -12,7 +12,7 @@ An independent Kodi add-on with optional scene skipping, subtitle-based word sil
 
 | | |
 | :--- | :--- |
-| Current release | **Beta 13** · `6.8.01+family.13` |
+| Current release | **Beta 14** · `6.8.01+family.14` |
 | Supported Kodi version | **Kodi 21 Omega** — including 21.1 and 21.3 on Fire TV |
 | Update channel | Public beta |
 | Add-on name in Kodi | **Umbrella Family** |
@@ -20,7 +20,16 @@ An independent Kodi add-on with optional scene skipping, subtitle-based word sil
 
 **Experimental, not a child-safety guarantee.** Filter coverage, editions, timing, seeking, and subtitle accuracy vary. An adult should review each title and source before children watch. Recent availability, timing, subtitle-download and audit features still need FireStick validation; credentialed OpenSubtitles downloading has not yet been live-tested. Do not rely on this beta for unattended viewing.
 
-### New in beta 13
+### New in beta 14
+
+- **Family panel opening fixed:** corrected the add-on path lookup that prevented the in-play controls from opening. Open playback controls with Enter/OK to access the panel.
+- **Beta 13 features retained:** in-play filter toggling and the separate Parent Audit button remain included.
+- **Validation:** regression tests enforce the path helper's required argument. The same overlay fix was tested on macOS Kodi 21.3 with Glass Onion: the panel opened, next-interval navigation led to a filtered skip from approximately 301 to 329 seconds, and pause worked. This does not verify full-movie coverage or timing, FireStick behavior, or live mode transitions.
+- **Stream startup:** earlier Glass Onion sources timed out while reading the stream; another 1080p H.264 source played. This release does not claim to fix provider/CDN timeouts.
+
+Restart Kodi after updating if it retains the old add-on in memory.
+
+### Included from beta 13
 
 - **Playback toggle and separate Parent Audit button:** open the playback OSD (usually Select/OK). Disabling filters and entering Parent Audit each require explicit unfiltered-playback confirmation. Choose Enable filters in audit to return to the same reviewed filters.
 - **One stream/session:** mode changes do not reload or deliberately pause/resume the stream. Enabling filters inside a selected skip immediately seeks beyond it; enabling inside a mute immediately silences it. Known pending seeks block switching until they settle.
@@ -86,9 +95,9 @@ Family Filters is **off by default**. Enable it under **Settings → Playback �
 ## Downloads & verification
 
 - **Recommended:** [Repository installer](https://ccherbst.github.io/umbrella-family-repo/repository.umbrellafamily-1.0.0.zip) — install once for Kodi-managed updates.
-- **Manual fallback:** [Kodi 21 add-on ZIP](https://ccherbst.github.io/umbrella-family-repo/omega/plugin.video.umbrellafamily/plugin.video.umbrellafamily-6.8.01+family.13.zip) — does not install the update repository.
+- **Manual fallback:** [Kodi 21 add-on ZIP](https://ccherbst.github.io/umbrella-family-repo/omega/plugin.video.umbrellafamily/plugin.video.umbrellafamily-6.8.01+family.14.zip) — does not install the update repository.
 - [SHA-256 checksums](https://ccherbst.github.io/umbrella-family-repo/SHA256SUMS)
-- [Corresponding source ZIP](https://ccherbst.github.io/umbrella-family-repo/source/umbrella-family-6.8.01+family.13-source.zip) — includes source, build tooling, tests, and notices.
+- [Corresponding source ZIP](https://ccherbst.github.io/umbrella-family-repo/source/umbrella-family-6.8.01+family.14-source.zip) — includes source, build tooling, tests, and notices.
 - [License](https://ccherbst.github.io/umbrella-family-repo/LICENSE.txt)
 
 This is a **public distribution repository**, not an unpacked application source tree. It contains installable ZIPs, update metadata, documentation, and presentation assets. Kodi add-ons are Python-based, so application code necessarily exists inside the installable ZIP. The matching source archive is provided with the GPL license notices.
