@@ -1,13 +1,14 @@
 {
-  "version": "6.8.01+family.14",
+  "version": "6.8.01+family.15",
   "channel": "beta",
   "kodi": 21,
   "addon_id": "plugin.video.umbrellafamily",
   "repository_id": "repository.umbrellafamily",
   "sha256": {
-    "omega/plugin.video.umbrellafamily/plugin.video.umbrellafamily-6.8.01+family.14.zip": "afb4de4e5d4c7506a02782ee31d5664b151d5eeb52d1f15e2b2f784c4d0f027d",
+    "omega/plugin.video.umbrellafamily/plugin.video.umbrellafamily-6.8.01+family.15.zip": "961cdd72638ec939549cba4c4d0199a8603832ce9d4f4aea29fc8a8fa604f2e5",
     "omega/repository.umbrellafamily/repository.umbrellafamily-1.0.0.zip": "70a68c51d8b865a27d2c13db64eba7eddd091170cb816ab583ba4795bb57fe63",
+    "omega/skin.estuary.family/skin.estuary.family-4.0.1.zip": "749734e5a412218381f048bafe3dd6fc7a08ecd7fc3790531d1aa4123dcb27d9",
     "repository.umbrellafamily-1.0.0.zip": "70a68c51d8b865a27d2c13db64eba7eddd091170cb816ab583ba4795bb57fe63",
-    "source/umbrella-family-6.8.01+family.14-source.zip": "dcdb82df6018aeb4326d73f640a12e4194ae83e49584949632d43d9eadeb3460"
+    "source/umbrella-family-6.8.01+family.15-source.zip": "3d6b8595a2e0d70acaf3bcdab0113596f36506917bb723523cc4994b4d758399"
   }
 }

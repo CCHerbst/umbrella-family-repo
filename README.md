@@ -12,13 +12,19 @@ An independent Kodi add-on with optional scene skipping, subtitle-based word sil
 
 | | |
 | :--- | :--- |
-| Current release | **Beta 14** · `6.8.01+family.14` |
+| Current release | **Beta 15** · `6.8.01+family.15` |
 | Supported Kodi version | **Kodi 21 Omega** — including 21.1 and 21.3 on Fire TV |
 | Update channel | Public beta |
 | Add-on name in Kodi | **Umbrella Family** |
 | Installation identity | `plugin.video.umbrellafamily` — separate from original Umbrella |
 
 **Experimental, not a child-safety guarantee.** Filter coverage, editions, timing, seeking, and subtitle accuracy vary. An adult should review each title and source before children watch. Recent availability, timing, subtitle-download and audit features still need FireStick validation; credentialed OpenSubtitles downloading has not yet been live-tested. Do not rely on this beta for unattended viewing.
+
+### New in beta 15
+
+- **Playback icon:** the optional Estuary Family skin adds an umbrella next to Kodi's information icon. Select it during reviewed Family playback to open the larger filter controls. Install it from **Umbrella Family Repository → Look and feel → Skin → Estuary Family**, then activate it in **Settings → Interface → Skin**. The original Estuary remains available; skin-specific preferences may differ.
+- **Language filtering:** edit the word list in the filter chooser, then review subtitle match counts and mute intervals before playback. Subtitles must match the audio and timing; matching cues are muted in full.
+- **Tested on macOS Kodi 21.3:** the icon opened the Family panel. A synthetic subtitle test muted and restored audio for two matching intervals. This does not establish movie-wide subtitle coverage. Fire TV and other skins remain untested.
 
 ### New in beta 14
 
@@ -95,9 +101,9 @@ Family Filters is **off by default**. Enable it under **Settings → Playback �
 ## Downloads & verification
 
 - **Recommended:** [Repository installer](https://ccherbst.github.io/umbrella-family-repo/repository.umbrellafamily-1.0.0.zip) — install once for Kodi-managed updates.
-- **Manual fallback:** [Kodi 21 add-on ZIP](https://ccherbst.github.io/umbrella-family-repo/omega/plugin.video.umbrellafamily/plugin.video.umbrellafamily-6.8.01+family.14.zip) — does not install the update repository.
+- **Manual fallback:** [Kodi 21 add-on ZIP](https://ccherbst.github.io/umbrella-family-repo/omega/plugin.video.umbrellafamily/plugin.video.umbrellafamily-6.8.01+family.15.zip) — does not install the update repository.
 - [SHA-256 checksums](https://ccherbst.github.io/umbrella-family-repo/SHA256SUMS)
-- [Corresponding source ZIP](https://ccherbst.github.io/umbrella-family-repo/source/umbrella-family-6.8.01+family.14-source.zip) — includes source, build tooling, tests, and notices.
+- [Corresponding source ZIP](https://ccherbst.github.io/umbrella-family-repo/source/umbrella-family-6.8.01+family.15-source.zip) — includes source, build tooling, tests, and notices.
 - [License](https://ccherbst.github.io/umbrella-family-repo/LICENSE.txt)
 
 This is a **public distribution repository**, not an unpacked application source tree. It contains installable ZIPs, update metadata, documentation, and presentation assets. Kodi add-ons are Python-based, so application code necessarily exists inside the installable ZIP. The matching source archive is provided with the GPL license notices.
