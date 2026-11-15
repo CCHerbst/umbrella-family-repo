@@ -1,0 +1,1 @@
+Beta 10: separate Umbrella Family identity and automatic-update repository. Includes beta 9 filtering, Parent Audit, VideoSkip browsing and experimental adult-approved landmark alignment. Newer features still require FireStick validation. Earlier betas: export/import settings once, then disable the old beta.

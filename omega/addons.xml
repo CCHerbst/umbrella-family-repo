@@ -1,0 +1,277 @@
+<?xml version='1.0' encoding='utf-8'?>
+<addons><addon id="plugin.video.umbrellafamily" name="Umbrella Family" provider-name="Umbrella / Umbrella Family contributors" version="6.8.01+family.10">
+	<requires>
+		<import addon="xbmc.python" version="3.0.0" />
+		<import addon="script.module.requests" />
+		<import addon="script.module.pil" optional="true" />
+		<import addon="plugin.video.youtube" optional="true" />
+	</requires>
+	<extension point="xbmc.python.pluginsource" library="umbrella.py">
+		<provides>video</provides>
+	</extension>
+	<extension point="kodi.context.item">
+		<menu id="kodi.core.main">
+			<item library="resources\lib\context\addtoLibrary.py">
+				<label>$INFO[Window(home).Property(context.umbrellafamily.showUmbrella)]Add to Library</label>
+				<visible>
+					!String.IsEmpty(Window(home).Property(context.umbrellafamily.addtoLibrary)) +
+					String.StartsWith(ListItem.path,plugin://plugin.video.umbrellafamily/) +
+					String.IsEqual(ListItem.Property(isUmbrellaFamily_widget),true) +
+					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,tvshow) | String.IsEqual(ListItem.dbtype,season) | String.IsEqual(ListItem.dbtype,movie)]
+				</visible>
+			</item>
+			<item library="resources\lib\context\addtoFavourite.py">
+				<label>$INFO[Window(home).Property(context.umbrellafamily.showUmbrella)]Add/Remove Favourite</label>
+				<visible>
+					!String.IsEmpty(Window(home).Property(context.umbrellafamily.addtoFavourite)) +
+					String.StartsWith(ListItem.path,plugin://plugin.video.umbrellafamily/) +
+					String.IsEqual(ListItem.Property(isUmbrellaFamily_widget),true) +
+					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,tvshow) | String.IsEqual(ListItem.dbtype,movie)]
+				</visible>
+			</item>
+			<item library="resources\lib\context\artworkCustomize.py">
+				<label>$INFO[Window(home).Property(context.umbrellafamily.showUmbrella)]Customize Artwork</label>
+				<visible>
+					!String.IsEmpty(Window(home).Property(context.umbrellafamily.artworkCustomize)) +
+					String.StartsWith(ListItem.path,plugin://plugin.video.umbrellafamily/) +
+					String.IsEqual(ListItem.Property(isUmbrellaFamily_widget),true) +
+					[String.IsEqual(ListItem.dbtype,tvshow) | String.IsEqual(ListItem.dbtype,movie) | String.IsEqual(ListItem.dbtype,season)]
+				</visible>
+			</item>
+			<item library="resources\lib\context\playTrailer.py">
+				<label>$INFO[Window(home).Property(context.umbrellafamily.showUmbrella)]Play Trailer</label>
+				<visible>
+					!String.IsEmpty(Window(home).Property(context.umbrellafamily.playTrailer)) +
+					String.StartsWith(ListItem.path,plugin://plugin.video.umbrellafamily/) +
+					String.IsEqual(ListItem.Property(isUmbrellaFamily_widget),true) +
+					[String.IsEqual(ListItem.dbtype,tvshow) | String.IsEqual(ListItem.dbtype,movie)]
+				</visible>
+			</item>
+			<item library="resources\lib\context\playTrailerSelect.py">
+				<label>$INFO[Window(home).Property(context.umbrellafamily.showUmbrella)]Play Trailer (Select)</label>
+				<visible>
+					!String.IsEmpty(Window(home).Property(context.umbrellafamily.playTrailerSelect)) +
+					String.StartsWith(ListItem.path,plugin://plugin.video.umbrellafamily/) +
+					String.IsEqual(ListItem.Property(isUmbrellaFamily_widget),true) +
+					[String.IsEqual(ListItem.dbtype,tvshow) | String.IsEqual(ListItem.dbtype,movie)]
+				</visible>
+			</item>
+			<item library="resources\lib\context\traktManager.py">
+				<label>$INFO[Window(home).Property(context.umbrellafamily.showUmbrella)]Trakt Manager</label>
+				<visible>
+					!String.IsEmpty(Window(home).Property(context.umbrellafamily.traktManager)) +
+					String.StartsWith(ListItem.path,plugin://plugin.video.umbrellafamily/) +
+					String.IsEqual(ListItem.Property(isUmbrellaFamily_widget),true) +
+					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,tvshow) | String.IsEqual(ListItem.dbtype,season) | String.IsEqual(ListItem.dbtype,movie)]
+				</visible>
+			</item>
+			<item library="resources\lib\context\mdblistManager.py">
+				<label>$INFO[Window(home).Property(context.umbrellafamily.showUmbrella)]MDBList Manager</label>
+				<visible>
+					!String.IsEmpty(Window(home).Property(context.umbrellafamily.mdblistManager)) +
+					String.StartsWith(ListItem.path,plugin://plugin.video.umbrellafamily/) +
+					String.IsEqual(ListItem.Property(isUmbrellaFamily_widget),true) +
+					[String.IsEqual(ListItem.dbtype,tvshow) | String.IsEqual(ListItem.dbtype,movie)]
+				</visible>
+			</item>
+			<item library="resources\lib\context\simklManager.py">
+				<label>$INFO[Window(home).Property(context.umbrellafamily.showUmbrella)]SimKL Manager</label>
+				<visible>
+					!String.IsEmpty(Window(home).Property(context.umbrellafamily.simklManager)) +
+					String.StartsWith(ListItem.path,plugin://plugin.video.umbrellafamily/) +
+					String.IsEqual(ListItem.Property(isUmbrellaFamily_widget),true) +
+					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,tvshow) | String.IsEqual(ListItem.dbtype,season) | String.IsEqual(ListItem.dbtype,movie)]
+				</visible>
+			</item>
+			<item library="resources\lib\context\customManager.py">
+				<label>$INFO[Window(home).Property(context.umbrellafamily.showUmbrella)]Custom Manager</label>
+				<visible>
+					!String.IsEmpty(Window(home).Property(context.umbrellafamily.customManager)) +
+					String.StartsWith(ListItem.path,plugin://plugin.video.umbrellafamily/) +
+					String.IsEqual(ListItem.Property(isUmbrellaFamily_widget),true) +
+					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,tvshow) | String.IsEqual(ListItem.dbtype,season) | String.IsEqual(ListItem.dbtype,movie)]
+				</visible>
+			</item>
+			<item library="resources\lib\context\floppyManager.py">
+				<label>$INFO[Window(home).Property(context.umbrellafamily.showUmbrella)]Floppy Manager</label>
+				<visible>
+					!String.IsEmpty(Window(home).Property(context.umbrellafamily.floppyManager)) +
+					String.StartsWith(ListItem.path,plugin://plugin.video.umbrellafamily/) +
+					String.IsEqual(ListItem.Property(isUmbrellaFamily_widget),true) +
+					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,tvshow) | String.IsEqual(ListItem.dbtype,season) | String.IsEqual(ListItem.dbtype,movie)]
+				</visible>
+			</item>
+			<item library="resources\lib\context\scrobManager.py">
+				<label>$INFO[Window(home).Property(context.umbrellafamily.showUmbrella)]Scrob Manager</label>
+				<visible>
+					!String.IsEmpty(Window(home).Property(context.umbrellafamily.scrobManager)) +
+					String.StartsWith(ListItem.path,plugin://plugin.video.umbrellafamily/) +
+					String.IsEqual(ListItem.Property(isUmbrellaFamily_widget),true) +
+					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,tvshow) | String.IsEqual(ListItem.dbtype,season) | String.IsEqual(ListItem.dbtype,movie)]
+				</visible>
+			</item>
+			<item library="resources\lib\context\punchplayManager.py">
+				<label>$INFO[Window(home).Property(context.umbrellafamily.showUmbrella)]PunchPlay Manager</label>
+				<visible>
+					!String.IsEmpty(Window(home).Property(context.umbrellafamily.punchplayManager)) +
+					String.StartsWith(ListItem.path,plugin://plugin.video.umbrellafamily/) +
+					String.IsEqual(ListItem.Property(isUmbrellaFamily_widget),true) +
+					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,tvshow) | String.IsEqual(ListItem.dbtype,season) | String.IsEqual(ListItem.dbtype,movie)]
+				</visible>
+			</item>
+			<item library="resources\lib\context\tmdbListManager.py">
+				<label>$INFO[Window(home).Property(context.umbrellafamily.showUmbrella)]TMDB List Manager</label>
+				<visible>
+					!String.IsEmpty(Window(home).Property(context.umbrellafamily.tmdbListManager)) +
+					String.StartsWith(ListItem.path,plugin://plugin.video.umbrellafamily/) +
+					String.IsEqual(ListItem.Property(isUmbrellaFamily_widget),true) +
+					[String.IsEqual(ListItem.dbtype,tvshow) | String.IsEqual(ListItem.dbtype,movie)]
+				</visible>
+			</item>
+			<item library="resources\lib\context\tmdbWatchlist.py">
+				<label>$INFO[Window(home).Property(context.umbrellafamily.showUmbrella)]TMDb Watchlist</label>
+				<visible>
+					!String.IsEmpty(Window(home).Property(context.umbrellafamily.tmdbWatchlist)) +
+					String.StartsWith(ListItem.path,plugin://plugin.video.umbrellafamily/) +
+					String.IsEqual(ListItem.Property(isUmbrellaFamily_widget),true) +
+					[String.IsEqual(ListItem.dbtype,tvshow) | String.IsEqual(ListItem.dbtype,movie)]
+				</visible>
+			</item>
+			<item library="resources\lib\context\clearProviders.py">
+				<label>$INFO[Window(home).Property(context.umbrellafamily.showUmbrella)]Clear Providers</label>
+				<visible>
+					[!String.IsEmpty(Window(home).Property(context.umbrellafamily.clearProviders)) +
+					String.StartsWith(ListItem.FolderPath,plugin://plugin.video.umbrellafamily/?action=play) +
+					String.IsEqual(ListItem.Property(isUmbrellaFamily_widget),true) +
+					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,movie)]] |
+					[String.Contains(Container.FolderPath,videodb://) +
+					[String.Contains(Container.ListItem.Path,Window(home).Property(umbrellafamily.movieLib.path)) | String.Contains(Container.ListItem.Path,Window(home).Property(umbrellafamily.tvLib.path))] +
+					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,movie)]]
+				</visible>
+			</item>
+			<item library="resources\lib\context\clearBookmark.py">
+				<label>$INFO[Window(home).Property(context.umbrellafamily.showUmbrella)]Clear Item Bookmark</label>
+				<visible>
+					!String.IsEmpty(Window(home).Property(context.umbrellafamily.clearBookmark)) +
+					String.StartsWith(ListItem.FolderPath,plugin://plugin.video.umbrellafamily/?action=play) +
+					String.IsEqual(ListItem.Property(isUmbrellaFamily_widget),true) +
+					ListItem.IsResumable +
+					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,movie)]
+				</visible>
+			</item>
+			<item library="resources\lib\context\rescrape.py">
+				<label>$INFO[Window(home).Property(context.umbrellafamily.showUmbrella)]Rescrape Item</label>
+				<visible>
+					[!String.IsEmpty(Window(home).Property(context.umbrellafamily.rescrape)) +
+					String.StartsWith(ListItem.FolderPath,plugin://plugin.video.umbrellafamily/?action=play) +
+					String.IsEqual(ListItem.Property(isUmbrellaFamily_widget),true) +
+					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,movie)]]
+				</visible>
+			</item>
+			<item library="resources\lib\context\libMdblistManager.py">
+				<label>$INFO[Window(home).Property(context.umbrellafamily.showUmbrella)]MDBList Watchlist Lib</label>
+				<visible>
+					!String.IsEmpty(Window(home).Property(context.umbrellafamily.libMdblistManager)) +
+					[String.Contains(Container.FolderPath,videodb://) | String.Contains(Container.ListItem.FolderPath,videodb://)] +
+					[String.Contains(Container.ListItem.Path,Window(home).Property(umbrellafamily.movieLib.path)) | String.Contains(Container.ListItem.Path,Window(home).Property(umbrellafamily.tvLib.path))] +
+					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,movie)]
+				</visible>
+			</item>
+			<item library="resources\lib\context\addLibtoFavourite.py">
+				<label>$INFO[Window(home).Property(context.umbrellafamily.showUmbrella)]Add/Remove Favourite</label>
+				<visible>
+					!String.IsEmpty(Window(home).Property(context.umbrellafamily.addLibtoFavourite)) +
+					[String.Contains(Container.FolderPath,videodb://) | String.Contains(Container.ListItem.FolderPath,videodb://)] +
+					[String.Contains(Container.ListItem.Path,Window(home).Property(umbrellafamily.movieLib.path)) | String.Contains(Container.ListItem.Path,Window(home).Property(umbrellafamily.tvLib.path))] +
+					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,movie)]
+				</visible>
+			</item>
+			<item library="resources\lib\context\libRescrape.py">
+				<label>$INFO[Window(home).Property(context.umbrellafamily.showUmbrella)]Rescrape Lib Item</label>
+				<visible>
+					[String.Contains(Container.FolderPath,videodb://) | String.Contains(Container.ListItem.FolderPath,videodb://)] +
+					[String.Contains(Container.ListItem.Path,Window(home).Property(umbrellafamily.movieLib.path)) | String.Contains(Container.ListItem.Path,Window(home).Property(umbrellafamily.tvLib.path))] +
+					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,movie)]
+				</visible>
+			</item>
+			<item library="resources\lib\context\playFromHere.py">
+				<label>$INFO[Window(home).Property(context.umbrellafamily.showUmbrella)]Play from here</label>
+				<visible>
+					!String.IsEmpty(Window(home).Property(context.umbrellafamily.playFromHere)) +
+					String.StartsWith(ListItem.path,plugin://plugin.video.umbrellafamily/) +
+					String.IsEqual(ListItem.Property(isUmbrellaFamily_widget),true) +
+					String.IsEqual(ListItem.dbtype,episode)
+				</visible>
+			</item>
+			<item library="resources\lib\context\autoPlay.py">
+				<label>$INFO[Window(home).Property(context.umbrellafamily.showUmbrella)]Auto Play</label>
+				<visible>
+					String.IsEmpty(Window(home).Property(umbrellafamily.autoPlay.enabled)) +
+					!String.IsEmpty(Window(home).Property(context.umbrellafamily.autoPlay)) +
+					String.StartsWith(ListItem.FolderPath,plugin://plugin.video.umbrellafamily/?action=play) +
+					String.IsEqual(ListItem.Property(isUmbrellaFamily_widget),true) +
+					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,movie)]
+				</visible>
+			</item>
+			<item library="resources\lib\context\sourceSelect.py">
+				<label>$INFO[Window(home).Property(context.umbrellafamily.showUmbrella)]Source Select</label>
+				<visible>
+					!String.IsEmpty(Window(home).Property(umbrellafamily.autoPlay.enabled)) +
+					!String.IsEmpty(Window(home).Property(context.umbrellafamily.sourceSelect)) +
+					String.StartsWith(ListItem.FolderPath,plugin://plugin.video.umbrellafamily/?action=play) +
+					String.IsEqual(ListItem.Property(isUmbrellaFamily_widget),true) +
+					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,movie)]
+				</visible>
+			</item>
+			<item library="resources\lib\context\findSimilar.py">
+				<label>$INFO[Window(home).Property(context.umbrellafamily.showUmbrella)]Find Similar</label>
+				<visible>
+					!String.IsEmpty(Window(home).Property(context.umbrellafamily.findSimilar)) +
+					String.StartsWith(ListItem.path,plugin://plugin.video.umbrellafamily/) +
+					String.IsEqual(ListItem.Property(isUmbrellaFamily_widget),true) +
+					[String.IsEqual(ListItem.dbtype,tvshow) | String.IsEqual(ListItem.dbtype,movie)]
+				</visible>
+			</item>
+			<item library="resources\lib\context\browseSeries.py">
+				<label>$INFO[Window(home).Property(context.umbrellafamily.showUmbrella)]Browse Series</label>
+				<visible>
+					!String.IsEmpty(Window(home).Property(context.umbrellafamily.browseSeries)) +
+					String.StartsWith(ListItem.path,plugin://plugin.video.umbrellafamily/) +
+					String.IsEqual(ListItem.Property(isUmbrellaFamily_widget),true) +
+					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,tvshow)]
+				</visible>
+			</item>
+			<item library="resources\lib\context\browseEpisodes.py">
+				<label>$INFO[Window(home).Property(context.umbrellafamily.showUmbrella)]Browse Episodes</label>
+				<visible>
+					!String.IsEmpty(Window(home).Property(context.umbrellafamily.browseEpisodes)) +
+					String.StartsWith(ListItem.path,plugin://plugin.video.umbrellafamily/) +
+					String.IsEqual(ListItem.Property(isUmbrellaFamily_widget),true) +
+					String.IsEqual(ListItem.dbtype,episode)
+				</visible>
+			</item>
+		</menu>
+	</extension>
+	<extension point="xbmc.service" library="service.py" start="startup" />
+	<extension point="xbmc.python.module" library="resources/lib/" />
+	<extension point="xbmc.addon.metadata">
+		<reuselanguageinvoker>true</reuselanguageinvoker>
+		<summary lang="en">Umbrella Family - beta 10. Experimental filtering; not a child-safety guarantee.</summary>
+		<description lang="en">Independent Umbrella fork with optional scene skipping, subtitle-based word silencing, and Parent Audit. Kodi 21 beta channel. Adult review is required; filter coverage and timing vary by source. Not affiliated with Kodi or the original Umbrella maintainers.</description>
+		<platform>all</platform>
+		<license>GNU GENERAL PUBLIC LICENSE. Version 3, 29 June 2007</license>
+		<forum />
+		<website>https://ccherbst.github.io/umbrella-family-repo/</website>
+		<source>https://ccherbst.github.io/umbrella-family-repo/source/umbrella-family-6.8.01+family.10-source.zip</source>
+		<disclaimer lang="en">The author of this addon does not host any of the content which is found and have no affiliation with any of the content providers. This addon simply searches websites for content. Use at your own risk!</disclaimer>
+		<assets>
+			<icon>icon.png</icon>
+			<fanart>fanart.jpg</fanart>
+			<screenshot>resources/screenshots/screenshot001.jpg</screenshot>
+			<screenshot>resources/screenshots/screenshot002.jpg</screenshot>
+			<screenshot>resources/screenshots/screenshot003.jpg</screenshot>
+		</assets>
+		<news>Beta 10: separate Umbrella Family identity and automatic-update repository. Includes beta 9 filtering, Parent Audit, VideoSkip browsing and experimental adult-approved landmark alignment. Newer features still require FireStick validation. Earlier betas: export/import settings once, then disable the old beta.</news>
+	</extension>
+
+</addon><addon id="repository.umbrellafamily" name="Umbrella Family Repository (Beta)" version="1.0.0" provider-name="Umbrella Family contributors"><extension point="xbmc.addon.repository"><dir minversion="21.0.0" maxversion="21.99.99"><info>https://ccherbst.github.io/umbrella-family-repo/omega/addons.xml</info><checksum>https://ccherbst.github.io/umbrella-family-repo/omega/addons.xml.md5</checksum><datadir>https://ccherbst.github.io/umbrella-family-repo/omega/</datadir><hashes>false</hashes></dir></extension><extension point="xbmc.addon.metadata"><summary>Umbrella Family beta updates for Kodi 21 Omega</summary><description>Install once for future beta updates. Adult review required.</description><platform>all</platform><license>GPL-3.0-or-later</license><website>https://ccherbst.github.io/umbrella-family-repo/</website></extension></addon></addons>
