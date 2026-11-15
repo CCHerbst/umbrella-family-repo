@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<addons><addon id="plugin.video.umbrellafamily" name="Umbrella Family" provider-name="Umbrella / Umbrella Family contributors" version="6.8.01+family.12">
+<addons><addon id="plugin.video.umbrellafamily" name="Umbrella Family" provider-name="Umbrella / Umbrella Family contributors" version="6.8.01+family.13">
 	<requires>
 		<import addon="xbmc.python" version="3.0.0" />
 		<import addon="script.module.requests" />
@@ -256,13 +256,13 @@
 	<extension point="xbmc.python.module" library="resources/lib/" />
 	<extension point="xbmc.addon.metadata">
 		<reuselanguageinvoker>true</reuselanguageinvoker>
-		<summary lang="en">Umbrella Family - beta 12. Experimental filtering; not a child-safety guarantee.</summary>
+		<summary lang="en">Umbrella Family - beta 13. Experimental filtering; not a child-safety guarantee.</summary>
 		<description lang="en">Independent Umbrella fork with optional scene skipping, subtitle-based word silencing, and Parent Audit. Kodi 21 beta channel. Adult review is required; filter coverage and timing vary by source. Not affiliated with Kodi or the original Umbrella maintainers.</description>
 		<platform>all</platform>
 		<license>GNU GENERAL PUBLIC LICENSE. Version 3, 29 June 2007</license>
 		<forum />
 		<website>https://ccherbst.github.io/umbrella-family-repo/</website>
-		<source>https://ccherbst.github.io/umbrella-family-repo/source/umbrella-family-6.8.01+family.12-source.zip</source>
+		<source>https://ccherbst.github.io/umbrella-family-repo/source/umbrella-family-6.8.01+family.13-source.zip</source>
 		<disclaimer lang="en">The author of this addon does not host any of the content which is found and have no affiliation with any of the content providers. This addon simply searches websites for content. Use at your own risk!</disclaimer>
 		<assets>
 			<icon>icon.png</icon>
@@ -271,7 +271,7 @@
 			<screenshot>resources/screenshots/screenshot002.jpg</screenshot>
 			<screenshot>resources/screenshots/screenshot003.jpg</screenshot>
 		</assets>
-		<news>Beta 12: playback controls for filtered sessions (play/pause, seek, next filter interval, filter review and access to Kodi controls). Hiding the panel keeps filtering active. Parent Audit startup dialog cleanup and callback handling corrected. Category/timing changes still require restarting through review. The reported Glass Onion/CleanStream startup hang needs FireStick confirmation. Timing/coverage remain unverified; device and credentialed subtitle-download testing remain outstanding. Adult-only testing required. Repository updates preserve the separate Umbrella Family profile.</news>
+		<news>Beta 13: in-player filter toggle and separate Parent Audit button, with explicit unfiltered confirmation. Switch between reviewed modes without reloading the stream; known pending seeks block switching. Enabling filters inside a cut seeks beyond it immediately. Hiding the panel retains the current mode, including OFF. Playback must begin through filter or audit review; changing categories/timing requires restarting. Transition failures stop playback. FireStick layout, remote, audio and decoder timing remain unverified. Not a child-safety guarantee. Adult-only testing required.</news>
 	</extension>
 
 </addon><addon id="repository.umbrellafamily" name="Umbrella Family Repository (Beta)" version="1.0.0" provider-name="Umbrella Family contributors"><extension point="xbmc.addon.repository"><dir minversion="21.0.0" maxversion="21.99.99"><info>https://ccherbst.github.io/umbrella-family-repo/omega/addons.xml</info><checksum>https://ccherbst.github.io/umbrella-family-repo/omega/addons.xml.md5</checksum><datadir>https://ccherbst.github.io/umbrella-family-repo/omega/</datadir><hashes>false</hashes></dir></extension><extension point="xbmc.addon.metadata"><summary>Umbrella Family beta updates for Kodi 21 Omega</summary><description>Install once for future beta updates. Adult review required.</description><platform>all</platform><license>GPL-3.0-or-later</license><website>https://ccherbst.github.io/umbrella-family-repo/</website></extension></addon></addons>

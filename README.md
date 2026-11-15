@@ -12,7 +12,7 @@ An independent Kodi add-on with optional scene skipping, subtitle-based word sil
 
 | | |
 | :--- | :--- |
-| Current release | **Beta 12** · `6.8.01+family.12` |
+| Current release | **Beta 13** · `6.8.01+family.13` |
 | Supported Kodi version | **Kodi 21 Omega** — including 21.1 and 21.3 on Fire TV |
 | Update channel | Public beta |
 | Add-on name in Kodi | **Umbrella Family** |
@@ -20,12 +20,13 @@ An independent Kodi add-on with optional scene skipping, subtitle-based word sil
 
 **Experimental, not a child-safety guarantee.** Filter coverage, editions, timing, seeking, and subtitle accuracy vary. An adult should review each title and source before children watch. Recent availability, timing, subtitle-download and audit features still need FireStick validation; credentialed OpenSubtitles downloading has not yet been live-tested. Do not rely on this beta for unattended viewing.
 
-### New in beta 12
+### New in beta 13
 
-- **Playback controls:** open the playback OSD (usually Select/OK on Fire TV) during filtered playback for play/pause, back 10 seconds, forward 30 seconds, next filter interval, filter review/timing, Kodi controls, hide and stop.
-- **Filters stay active:** hiding the panel or opening details does not disable filtering. Category and timing changes still require stopping and restarting through review. Parent Audit remains a separate, explicitly unfiltered mode.
-- **Parent Audit startup correction:** dialog cleanup now finishes before playback resolution, and the audit overlay has its own Kodi callback thread. These changes address an identified startup race; the reported Glass Onion/CleanStream hang still needs confirmation on FireStick Kodi 21.3.
-- **Validation:** 275 automated tests pass. Remote behavior and layout still need device testing; this is not a safety certification.
+- **Playback toggle and separate Parent Audit button:** open the playback OSD (usually Select/OK). Disabling filters and entering Parent Audit each require explicit unfiltered-playback confirmation. Choose Enable filters in audit to return to the same reviewed filters.
+- **One stream/session:** mode changes do not reload or deliberately pause/resume the stream. Enabling filters inside a selected skip immediately seeks beyond it; enabling inside a mute immediately silences it. Known pending seeks block switching until they settle.
+- **State and session protection:** leaving filtering restores the audio/subtitle state owned by the engine. Stale callbacks or confirmations cannot change a newer playback session or mode. Transition failures stop playback.
+- **Scope:** playback must have begun through filter or Parent Audit review. Globally disabled, ordinary playback cannot attach filters midstream. Category/timing changes still require restarting through review. Hiding the panel preserves the current mode, including OFF. Audit remains explicitly unfiltered and Back stops playback.
+- **Validation:** automated tests cover controller transitions with mocked Kodi adapters. FireStick layout, remote, audio and decoder timing remain unverified. The reported Glass Onion/CleanStream startup hang and credentialed subtitle downloads still require device testing. This is not a safety certification.
 
 ### Also included from beta 11
 
@@ -77,7 +78,7 @@ Preference/account export is selective, not a full profile backup. Existing filt
 | Source-list availability | Background movie/exact-episode checks and read-only VideoSkip edition/notes inspection. Never a guarantee that filters fit a particular stream. |
 | Subtitle word silencing | Mute subtitle cues containing configured words or phrases. This is cue-based muting, not live speech recognition or generated bleeps. |
 | Parent Audit | Watch unfiltered content with discreet explanatory banners; review current settings or all markers, and jump between marked scenes. |
-| Playback controls | Open the playback OSD for transport controls, next selected interval, reviewed filter details and a return to Kodi controls. Filtering stays active when the panel is hidden. |
+| Playback controls | Open the playback OSD for transport controls, next selected interval, reviewed filter details and a return to Kodi controls. Hiding the panel preserves the current mode, including OFF. |
 | Timing tools | Save adjustments for an exact stream/filter revision; manually mark a reference in Parent Audit or experimentally propose visual alignment, subject to adult approval. |
 
 Family Filters is **off by default**. Enable it under **Settings → Playback → Family Filters (beta)** and configure it before testing. Parent Audit intentionally plays the original unfiltered video and audio; use it without children present. TV filtering requires episode-matched records; movie-only lookup does not imply episode coverage.
@@ -85,9 +86,9 @@ Family Filters is **off by default**. Enable it under **Settings → Playback �
 ## Downloads & verification
 
 - **Recommended:** [Repository installer](https://ccherbst.github.io/umbrella-family-repo/repository.umbrellafamily-1.0.0.zip) — install once for Kodi-managed updates.
-- **Manual fallback:** [Kodi 21 add-on ZIP](https://ccherbst.github.io/umbrella-family-repo/omega/plugin.video.umbrellafamily/plugin.video.umbrellafamily-6.8.01+family.12.zip) — does not install the update repository.
+- **Manual fallback:** [Kodi 21 add-on ZIP](https://ccherbst.github.io/umbrella-family-repo/omega/plugin.video.umbrellafamily/plugin.video.umbrellafamily-6.8.01+family.13.zip) — does not install the update repository.
 - [SHA-256 checksums](https://ccherbst.github.io/umbrella-family-repo/SHA256SUMS)
-- [Corresponding source ZIP](https://ccherbst.github.io/umbrella-family-repo/source/umbrella-family-6.8.01+family.12-source.zip) — includes source, build tooling, tests, and notices.
+- [Corresponding source ZIP](https://ccherbst.github.io/umbrella-family-repo/source/umbrella-family-6.8.01+family.13-source.zip) — includes source, build tooling, tests, and notices.
 - [License](https://ccherbst.github.io/umbrella-family-repo/LICENSE.txt)
 
 This is a **public distribution repository**, not an unpacked application source tree. It contains installable ZIPs, update metadata, documentation, and presentation assets. Kodi add-ons are Python-based, so application code necessarily exists inside the installable ZIP. The matching source archive is provided with the GPL license notices.
